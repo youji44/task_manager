@@ -19,8 +19,7 @@ class SentinelAdmin
     {
         if(!Sentinel::check())
             return Redirect::route('login')->with('info', 'You must be logged in!');
-        elseif(Sentinel::inRole('admin') || Sentinel::inRole('superadmin')|| Sentinel::inRole('autovalidate'))
+        else
             return $next($request);
-        return Redirect::route('dashboard')->with('info', 'You must be logged in with Admin Role!');
     }
 }
